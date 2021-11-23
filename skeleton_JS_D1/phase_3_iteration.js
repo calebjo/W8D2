@@ -43,3 +43,5 @@ String.prototype.subString = function() {
 }
 
 console.log('HeyBuddy'.subString())
+
+buddy
