@@ -65,4 +65,45 @@ function fibonacci(n) {
     }
 }
 
-console.log(fibonacci(5)); 
+// console.log(fibonacci(5)); 
+
+function deepDup(array){
+    let newArr = [];
+    for (let i = 0; i < array.length; i++){
+        if (typeof array[i] === Array) {
+            deepDup(array[i]);
+        } else {
+            newArr.push(array[i]);
+        }
+    }
+    return newArr;
+}
+
+
+// let arr1 = [[1,2],[3],[4,5,[6]]];
+// let arr2 = deepDup(arr1);
+// // console.log(deepDup(arr1));
+// arr1.push([5]);
+// console.log(arr1);
+// console.log(arr2);
+
+function bSearch(arr, target){
+    if(arr.length === 0) {
+        return -1;
+    } else {
+        let midI = Math.floor(arr.length/2);
+
+        if (arr[midI] === target){
+            return midI;
+        } else if (arr[midI] < target){
+            let right = arr.slice(midI+1, arr.length);
+            return bSearch(right, target);
+        } else if (arr[midI] > target){
+            let left = arr.slice(0, midI-1);
+            return bSearch(left, target);
+        }  
+    }
+}
+
+let arr1 = [1, 2, 3, 4, 7, 11, 14];
+console.log(bSearch(arr1, 7));
